@@ -15,7 +15,7 @@
         <button type="submit" class="btn btn-default">Добавить задачу</button>
     </form>
     <hr>
-    <form action="/task/update" method="POST">
+    <form action="/task/update" method="post">
         <select name="" id="">
             <option value="d">Удалить</option>
             <option value="u">Пометить как сделано!</option>
