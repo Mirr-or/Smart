@@ -25,6 +25,9 @@ class PageController
 
     public function about()
     {
+        $title = 'About us';
+        $pageTitle = 'About us';
+
         require "views/about.view.php";
     }
 }

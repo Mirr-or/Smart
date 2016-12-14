@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+<h1><?= $pageTitle ?></h1>
 <div class="container">
     <form class="form-inline" action="/task/add" method="post">
         <div class="form-group">
