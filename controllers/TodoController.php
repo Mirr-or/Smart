@@ -5,6 +5,9 @@ class TodoController
 
     public function index()
     {
+        $title = 'Task-list';
+        $pageTitle = 'Task-list';
+
         $taskList = App::get('query')->selectAll('todo');
 
         include "views/todo.view.php";
