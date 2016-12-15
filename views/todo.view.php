@@ -27,10 +27,7 @@
         <?php if($task['complete']): ?>
             <li><s><?= $task['title'] ?></s></li>
         <?php else: ?>
-            <li>
-                <input type="checkbox" name="complete[]" value="">
-                <?= $task['title'] ?>
-            </li>
+            <li><input type="checkbox" name="complete[]" value=""><?= $task['title'] ?></li>
         <?php endif ?>
     <?php endforeach; ?>
     </ul>
