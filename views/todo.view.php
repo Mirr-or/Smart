@@ -10,7 +10,6 @@
 <div class="container">
     <form class="form-inline" action="/task/add" method="post">
         <div class="form-group">
-            <label for="task">Name</label>
             <input name="task" type="text" class="form-control" id="task" placeholder="Задача">
         </div>
         <button type="submit" class="btn btn-default">Добавить задачу</button>
