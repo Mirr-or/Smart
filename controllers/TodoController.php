@@ -17,18 +17,27 @@ class TodoController
     {
         $title = $_POST['task'];
 
-        App::get('query')->insert('todo', [
-            'title' => $title,
-        ]);
-
+        if (isset($title) && !empty($title)) {
+            App::get('query')->insert('todo', [
+                'title' => $title,
+            ]);
+        }
         Request::goBack();
     }
 
-    public function update()
+    public function actions()
     {
-        $id = 1;
-        App::get('query')->update('todo', $_POST, [
-            'id' => $id
-        ]);
+        if (isset($_POST["action"])) {
+            switch ($_POST["action"]) {
+                case "delete":
+                    App::get('query')->delete('todo', $_POST['complete']);
+                    break;
+
+                case "update":
+                    App::get('query')->update('todo', $_POST['complete']);
+                    break;
+            }
+            Request::goBack();
+        }
     }
 }

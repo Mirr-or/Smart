@@ -3,8 +3,7 @@
 
 $routers->get('task-list', 'TodoController@index');
 $routers->post('task/add', 'TodoController@add');
-$routers->post('task/update', 'TodoController@update');
-$routers->post('task/delete', 'TodoController@delete');
+$routers->post('task/actions', 'TodoController@actions');
 
 $routers->get('', 'PageController@index');
 
