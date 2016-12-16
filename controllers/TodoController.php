@@ -27,14 +27,17 @@ class TodoController
 
     public function actions()
     {
-        if (isset($_POST["action"])) {
-            switch ($_POST["action"]) {
+        $action = $_POST["action"];
+        $complete = $_POST['complete'];
+
+        if (isset($action)) {
+            switch ($action) {
                 case "delete":
-                    App::get('query')->delete('todo', $_POST['complete']);
+                    App::get('query')->delete('todo', $complete);
                     break;
 
                 case "update":
-                    App::get('query')->update('todo', $_POST['complete']);
+                    App::get('query')->update('todo', $complete);
                     break;
             }
             Request::goBack();
