@@ -18,16 +18,16 @@
     <hr>
     <form action="/task/actions" class="form-inline" method="post">
         <select name="action" class="form-control" id="action-task">
-            <option value="delete">Удалить</option>
             <option value="update">Пометить как сделано!</option>
+            <option value="delete">Удалить</option>
         </select>
         <input type="submit" class="btn btn-default">
-        <ul>
+        <ul class="list-group">
             <?php foreach($taskList as $task): ?>
                 <?php if($task['complete']): ?>
-                    <li><s><?= $task['title'] ?></s></li>
+                    <li class="list-group-item"><s><?= $task['title'] ?></s></li>
                 <?php else: ?>
-                    <li><input type="checkbox" name="complete[]" value="<?=$task['id']?>">
+                    <li class="list-group-item"><input type="checkbox" name="complete[]" value="<?=$task['id']?>">
                         <?= $task['title'] ?>
                     </li>
                 <?php endif ?>

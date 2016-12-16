@@ -17,10 +17,11 @@ class TodoController
     {
         $title = $_POST['task'];
 
-        App::get('query')->insert('todo', [
-            'title' => $title,
-        ]);
-
+        if (isset($title) && !empty($title)) {
+            App::get('query')->insert('todo', [
+                'title' => $title,
+            ]);
+        }
         Request::goBack();
     }
 
