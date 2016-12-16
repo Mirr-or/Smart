@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title><?= $title ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <h1><?= $pageTitle ?></h1>
@@ -15,21 +16,23 @@
         <button type="submit" class="btn btn-default">Добавить задачу</button>
     </form>
     <hr>
-    <form action="/task/update" method="post">
-        <select name="" id="">
-            <option value="d">Удалить</option>
-            <option value="u">Пометить как сделано!</option>
+    <form action="/task/actions" class="form-inline" method="post">
+        <select name="action" class="form-control" id="action-task">
+            <option value="delete">Удалить</option>
+            <option value="update">Пометить как сделано!</option>
         </select>
-        <input type="submit">
-    <ul>
-    <?php foreach($taskList as $task): ?>
-        <?php if($task['complete']): ?>
-            <li><s><?= $task['title'] ?></s></li>
-        <?php else: ?>
-            <li><input type="checkbox" name="complete[]" value=""><?= $task['title'] ?></li>
-        <?php endif ?>
-    <?php endforeach; ?>
-    </ul>
+        <input type="submit" class="btn btn-default">
+        <ul>
+            <?php foreach($taskList as $task): ?>
+                <?php if($task['complete']): ?>
+                    <li><s><?= $task['title'] ?></s></li>
+                <?php else: ?>
+                    <li><input type="checkbox" name="complete[]" value="<?=$task['id']?>">
+                        <?= $task['title'] ?>
+                    </li>
+                <?php endif ?>
+            <?php endforeach; ?>
+        </ul>
     </form>
 </div>
 </body>

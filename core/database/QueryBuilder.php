@@ -30,8 +30,23 @@ class QueryBuilder
 
         return $this->db->query($sql)->fetch_all(MYSQLI_ASSOC);
     }
-    public function update($table, array $data, array $where)
-    {
 
+    public function update($table, array $data)
+    {
+        $sql = sprintf(
+            "UPDATE %s SET complete = 1 WHERE id IN (%s)",
+            $table,
+            "'" . implode("', '", $data) . "'"
+        );
+        return $this->db->query($sql);
+    }
+    public function delete($table, array $data)
+    {
+        $sql = sprintf(
+            "DELETE FROM %s WHERE id IN (%s)",
+            $table,
+            "'" . implode("', '", $data) . "'"
+        );
+        return $this->db->query($sql);
     }
 }
