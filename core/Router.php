@@ -1,4 +1,5 @@
 <?php
+namespace Core;
 
 class Router
 {
@@ -35,9 +36,8 @@ class Router
             // return $this->routers[$url];
         }
 
-        throw new Exception('Page not Found');
+        throw new \Exception('Page not Found');
     }
-
 
     protected function callClass($url)
     {
