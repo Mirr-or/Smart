@@ -1,12 +1,16 @@
 <?php
+namespace App;
+
+use Core\App;
+use Core\Request;
 
 class TodoController
 {
 
     public function index()
     {
-        $title = 'Task-list';
-        $pageTitle = 'Task-list';
+        $title = 'Task list';
+        $pageTitle = 'Task list';
 
         $taskList = App::get('query')->selectAll('todo');
 
