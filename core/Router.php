@@ -32,16 +32,16 @@ class Router
         $url = Request::url();
 
         if( array_key_exists($url, $this->routers[Request::method()]) ){
-            return $this->callClass($url);
+            list($class, $method) = explode('@', $this->routers[Request::method()][$url]);
+            return $this->callClass('App\\' . $class, $method);
             // return $this->routers[$url];
         }
 
         throw new \Exception('Page not Found');
     }
 
-    protected function callClass($url)
+    protected function callClass($class, $method)
     {
-        list($class, $method) = explode('@', $this->routers[Request::method()][$url]);
         $class = new $class;
         $class->$method();
     }
