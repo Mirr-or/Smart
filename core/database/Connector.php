@@ -6,11 +6,13 @@ class Connector
 
     public static function getConnection($config)
     {
-        return new \mysqli(
-            $config['host'],
+        return new \PDO(
+            "{$config['connection']}:
+            host={$config['host']};
+            dbname={$config['dbname']}",
             $config['user'],
             $config['password'],
-            $config['dbname']
+            $config['options']
         );
     }
 }
