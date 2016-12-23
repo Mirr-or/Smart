@@ -34,7 +34,7 @@ class TodoController
         $action = $_POST["action"];
         $complete = $_POST['complete'];
 
-        if (isset($action)) {
+        if (isset($action) && !empty($complete)) {
             switch ($action) {
                 case "delete":
                     App::get('query')->delete('todo', $complete);
