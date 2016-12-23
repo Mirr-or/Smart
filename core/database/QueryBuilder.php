@@ -19,17 +19,17 @@ class QueryBuilder
             "INSERT INTO %s (%s) VALUES (%s)",
             $table,
             implode(', ', $keys),
-            "'" . implode("', '", $data) . "'"
+            ":" . implode("', :", $keys)
         );
-
-        return $this->db->query($sql);
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute($data);
     }
 
     public function selectAll($table)
     {
         $sql = "SELECT * FROM $table";
 
-        return $this->db->query($sql)->fetch_all(MYSQLI_ASSOC);
+        return $this->db->query($sql)->fetchAll();
     }
 
     public function update($table, array $data)

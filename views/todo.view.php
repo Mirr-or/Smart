@@ -24,11 +24,12 @@
         <input type="submit" class="btn btn-default">
         <ul class="list-group">
             <?php foreach($taskList as $task): ?>
-                <?php if($task['complete']): ?>
-                    <li class="list-group-item"><s><?= $task['title'] ?></s></li>
+                <?php if($task->complete): ?>
+                    <li class="list-group-item"><input type="checkbox" name="complete[]" value="<?= $task->id ?>">
+                        <s><?= $task->title ?></s></li>
                 <?php else: ?>
-                    <li class="list-group-item"><input type="checkbox" name="complete[]" value="<?=$task['id']?>">
-                        <?= $task['title'] ?>
+                    <li class="list-group-item"><input type="checkbox" name="complete[]" value="<?= $task->id ?>">
+                        <?= $task->title ?>
                     </li>
                 <?php endif ?>
             <?php endforeach; ?>
