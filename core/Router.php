@@ -30,6 +30,23 @@ class Router
     public function run()
     {
         $url = Request::url();
+        if( array_key_exists($url, $this->routers[Request::method()]) ){
+            return $this->callClass($url);
+            // return $this->routers[$url];
+        }
+        throw new \Exception('Page not Found');
+    }
+    protected function callClass($url)
+    {
+        list($class, $method) = explode('@', $this->routers[Request::method()][$url]);
+        $class = 'App\\' . $class;
+        $class = new $class;
+        $class->$method();
+    }
+
+/*    public function run()
+    {
+        $url = Request::url();
 
         if( array_key_exists($url, $this->routers[Request::method()]) ){
             list($class, $method) = explode('@', $this->routers[Request::method()][$url]);
@@ -44,5 +61,5 @@ class Router
     {
         $class = new $class;
         $class->$method();
-    }
+    }*/
 }

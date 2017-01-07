@@ -6,6 +6,8 @@ $routers->post('task/add', 'TodoController@add');
 $routers->post('task/actions', 'TodoController@actions');
 
 $routers->get('', 'PageController@index');
+$routers->post('calc', 'PageController@calc');
+$routers->post('remove', 'PageController@remove');
 
 $routers->get('table', 'PageController@table');
 
